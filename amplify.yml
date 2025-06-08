@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install
+    build:
+      commands:
+        - echo "POSTS_TABLE=$POSTS_TABLE" >> .env.production
+        - echo "REGION=$REGION" >> .env.production
+        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID" >> .env.production
+        - echo "DDB_SECRET_ACCESS_KEY=$DDB_SECRET_ACCESS_KEY" >> .env.production
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - node_modules/**/*
