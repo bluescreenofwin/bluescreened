@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../.aws"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
