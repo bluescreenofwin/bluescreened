@@ -6,9 +6,10 @@ frontend:
         - npm install
     build:
       commands:
-        - echo "POSTS_TABLE=$POSTS_TABLE" >> .env.production
-        - echo "REGION=$REGION" >> .env.production
-        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID" >> .env.production
+        # Inject POSTs_TABLE, AWS_REGION, and your DDB creds
+        - echo "POSTS_TABLE=$POSTS_TABLE"      >> .env.production
+        - echo "AWS_REGION=us-west-1"           >> .env.production   # ← hard-code your region here
+        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID"       >> .env.production
         - echo "DDB_SECRET_ACCESS_KEY=$DDB_SECRET_ACCESS_KEY" >> .env.production
         - npm run build
   artifacts:
