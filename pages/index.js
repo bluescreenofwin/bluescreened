@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import useSWR from 'swr';
 import PostList from '../components/PostList';
+import { invokeListPosts } from '../lib/apiGatewayClient';
 
-const fetcher = (url) => fetch(url).then(res => res.json());
+const fetcher = () => invokeListPosts().then(r => r.json());
 
 export default function Home() {
   const { data: posts, error } = useSWR('/api/posts', fetcher);

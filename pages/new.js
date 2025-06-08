@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+ import { invokeCreatePost } from '../lib/apiGatewayClient';
 
 export default function NewPost() {
   const [title, setTitle] = useState('');
@@ -8,10 +9,8 @@ export default function NewPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('/api/posts', {
-      method: 'POST',
-      body: JSON.stringify({ title, content }),
-    });
+
+ const res = await invokeCreatePost({ title, content });
     if (res.ok) router.push('/');
   };
 

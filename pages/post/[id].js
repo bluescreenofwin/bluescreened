@@ -13,7 +13,7 @@ export default function PostPage() {
   if (!post) return <div>Loading...</div>;
 
   const handleDelete = async () => {
-    await fetch(`/api/posts/${id}`, { method: 'DELETE' });
+    await invokeDeletePost(id);
     router.push('/');
   };
 
