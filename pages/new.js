@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
- import { invokeCreatePost } from '../lib/apiGatewayClient';
 
 export default function NewPost() {
   const [title, setTitle] = useState('');
@@ -10,8 +9,19 @@ export default function NewPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
- const res = await invokeCreatePost({ title, content });
-    if (res.ok) router.push('/');
+    // POST to your Next.js API proxy instead of using AWS SDK in the browser
+    const res = await fetch('/api/proxy-create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, content }),
+    });
+
+    if (res.ok) {
+      router.push('/');
+    } else {
+      console.error('Failed to create post:', await res.text());
+      alert('Error creating post');
+    }
   };
 
   return (
