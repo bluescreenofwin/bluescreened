@@ -6,7 +6,6 @@ frontend:
         - npm install
     build:
       commands:
-        # Inject needed env-vars so your SSR lambdas pick them up
         - echo "API_REGION=$API_REGION"               >> .env.production
         - echo "API_DOMAIN=$API_DOMAIN"               >> .env.production
         - echo "API_STAGE=$API_STAGE"                 >> .env.production
