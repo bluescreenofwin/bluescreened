@@ -1,0 +1,10 @@
+{
+  "name": "getPost",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.366.0",
+    "@aws-sdk/util-dynamodb": "^3.366.0"
+  },
+  "engines": { "node": ">=22" }
+}
