@@ -1,23 +1,37 @@
-import Link from 'next/link';
-import useSWR from 'swr';
-import PostList from '../components/PostList';
-import { invokeListPosts } from '../lib/apiGatewayClient';
+// pages/api/posts/index.js
 
-const fetcher = () => invokeListPosts().then(r => r.json());
+import { signAndFetch } from '../../../lib/apiGatewayClient';
 
-export default function Home() {
-  const { data: posts, error } = useSWR('/api/posts', fetcher);
+export default async function handler(req, res) {
+  // Handle GET /api/posts
+  if (req.method === 'GET') {
+    try {
+      const response = await signAndFetch('/posts', 'GET');
+      const posts = await response.json();
+      return res.status(200).json(posts);
+    } catch (err) {
+      console.error('Error proxying GET /posts:', err);
+      return res.status(500).json({ error: 'Failed to load posts' });
+    }
+  }
 
-  if (error) return <div className="text-danger">Failed to load posts</div>;
-  if (!posts) return <div>Loading...</div>;
+  // Handle POST /api/posts
+  if (req.method === 'POST') {
+    const { title, content } = JSON.parse(req.body || '{}');
+    if (!title || !content) {
+      return res.status(400).json({ error: 'Missing title or content' });
+    }
+    try {
+      const response = await signAndFetch('/posts', 'POST', { title, content });
+      const created = await response.json();
+      return res.status(response.status).json(created);
+    } catch (err) {
+      console.error('Error proxying POST /posts:', err);
+      return res.status(500).json({ error: 'Failed to create post' });
+    }
+  }
 
-  return (
-    <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h1>Microblog</h1>
-        <Link href="/new"><a className="btn btn-primary">New Post</a></Link>
-      </div>
-      <PostList posts={posts} />
-    </div>
-  );
+  // Method Not Allowed
+  res.setHeader('Allow', ['GET', 'POST']);
+  return res.status(405).end(`Method ${req.method} Not Allowed`);
 }
