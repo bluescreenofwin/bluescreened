@@ -6,10 +6,11 @@ frontend:
         - npm install
     build:
       commands:
-        # Inject POSTs_TABLE, AWS_REGION, and your DDB creds
-        - echo "POSTS_TABLE=$POSTS_TABLE"      >> .env.production
-        - echo "AWS_REGION=us-west-1"           >> .env.production   # ← hard-code your region here
-        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID"       >> .env.production
+        # Inject needed env-vars so your SSR lambdas pick them up
+        - echo "API_REGION=$API_REGION"               >> .env.production
+        - echo "API_DOMAIN=$API_DOMAIN"               >> .env.production
+        - echo "API_STAGE=$API_STAGE"                 >> .env.production
+        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID" >> .env.production
         - echo "DDB_SECRET_ACCESS_KEY=$DDB_SECRET_ACCESS_KEY" >> .env.production
         - npm run build
   artifacts:
@@ -18,5 +19,5 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - .next/cache/**/*
       - node_modules/**/*
+      - .next/cache/**/*
