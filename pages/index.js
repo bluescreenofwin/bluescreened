@@ -4,13 +4,28 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import PostList from '../components/PostList';
 
-const fetcher = (url) => fetch(url).then(res => res.json());
+// 1) Throw on non-2xx so SWR picks it up as `error`
+const fetcher = async (url) => {
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    // try to parse body for error message
+    let errMsg = `${res.status} ${res.statusText}`;
+    try {
+      const errorBody = await res.json();
+      errMsg = errorBody.error || errMsg;
+    } catch {}
+    throw new Error(errMsg);
+  }
+
+  return res.json();
+};
 
 export default function Home() {
-  const { data: posts, error } = useSWR('/api/proxy-list', fetcher);
+  const { data: posts, error, isLoading } = useSWR('/api/proxy-list', fetcher);
 
-  if (error)  return <div className="text-danger">Failed to load posts</div>;
-  if (!posts) return <div>Loading...</div>;
+  if (error) return <div className="text-danger">Error: {error.message}</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="container mt-4">
