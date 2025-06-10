@@ -3,7 +3,7 @@ import { DynamoDBClient, ScanCommand } from '@aws-sdk/client-dynamodb';
 import { unmarshall } from '@aws-sdk/util-dynamodb';
 
 export async function getServerSideProps({ res }) {
-  const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+  const client = new DynamoDBClient({ region: process.env.REGION });
   const data = await client.send(new ScanCommand({ TableName: process.env.POSTS_TABLE }));
   const feed = new RSS({
     title: 'Microblog RSS Feed',

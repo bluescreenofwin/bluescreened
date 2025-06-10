@@ -1,7 +1,7 @@
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 
-const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+const client = new DynamoDBClient({ region: process.env.REGION });
 
 export const handler = async () => {
   const data = await client.send(new ScanCommand({ TableName: process.env.POSTS_TABLE }));

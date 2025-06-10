@@ -3,7 +3,7 @@ import { unmarshall } from '@aws-sdk/util-dynamodb';
 import Link from 'next/link';
 
 export async function getStaticProps() {
-  const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+  const client = new DynamoDBClient({ region: process.env.REGION });
   const data = await client.send(new ScanCommand({
     TableName: process.env.POSTS_TABLE,
     Limit: 5

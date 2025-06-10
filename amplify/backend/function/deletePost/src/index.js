@@ -1,6 +1,6 @@
 import { DynamoDBClient, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 
-const client = new DynamoDBClient({ region: process.env.AWS_REGION });
+const client = new DynamoDBClient({ region: process.env.REGION });
 
 export const handler = async (event) => {
   const id = event.pathParameters.id;
