@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bluescreenedv2-dev-41de0-authRole",
+      "UnauthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreenedv2-dev-41de0-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreenedv2-dev-41de0-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-bluescreenedv2-dev-41de0-deployment",
+      "UnauthRoleName": "amplify-bluescreenedv2-dev-41de0-unauthRole",
+      "StackName": "amplify-bluescreenedv2-dev-41de0",
+      "StackId": "arn:aws:cloudformation:us-west-1:040479514298:stack/amplify-bluescreenedv2-dev-41de0/e125b720-459e-11f0-8fe1-02b47b13dd8d",
+      "AmplifyAppId": "d1g11el18bl75h"
+    }
+  }
+}
