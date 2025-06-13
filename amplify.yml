@@ -8,14 +8,18 @@ frontend:
   phases:
     preBuild:
       commands:
+        - echo "Installing Node.js 22 via nvm…"
+        - nvm install 22
+        - nvm use 22
+        - node -v               # verify you’re on v22.x.x
         - npm ci
-    build:
-      commands:
-        - npm run build
+  build:
+    commands:
+      - npm run build
   artifacts:
     baseDirectory: .next
     files:
-      - "**/*"
+      - '**/*'
   cache:
     paths:
       - node_modules/**/*
