@@ -1,9 +1,12 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   env: {
     POSTS_TABLE: process.env.POSTS_TABLE,
-    AWS_REGION: process.env.AWS_REGION,
+    REGION: process.env.REGION,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     BASE_URL: process.env.BASE_URL
-  },
-  target: "serverless"
+  }
 };
+
+module.exports = nextConfig;
