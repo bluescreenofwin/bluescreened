@@ -1,4 +1,10 @@
-import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_MICROBLOGTABLE_ARN
+	STORAGE_MICROBLOGTABLE_NAME
+	STORAGE_MICROBLOGTABLE_STREAMARN
+Amplify Params - DO NOT EDIT */import { DynamoDBClient, GetItemCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 
 const client = new DynamoDBClient({ region: process.env.REGION });

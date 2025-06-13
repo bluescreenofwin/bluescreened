@@ -1,4 +1,10 @@
-import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_MICROBLOGTABLE_ARN
+	STORAGE_MICROBLOGTABLE_NAME
+	STORAGE_MICROBLOGTABLE_STREAMARN
+Amplify Params - DO NOT EDIT */import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 import { v4 as uuidv4 } from "uuid";
 

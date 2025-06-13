@@ -10,6 +10,23 @@
       "StackName": "amplify-bluescreenedv2-dev-41de0",
       "StackId": "arn:aws:cloudformation:us-west-1:040479514298:stack/amplify-bluescreenedv2-dev-41de0/e125b720-459e-11f0-8fe1-02b47b13dd8d",
       "AmplifyAppId": "d1g11el18bl75h"
+    },
+    "categories": {
+      "function": {
+        "listPosts": {},
+        "getPost": {},
+        "deletePost": {},
+        "createPost": {}
+      },
+      "storage": {
+        "MicroblogTable": {
+          "tableName": "MicroblogTable",
+          "region": "us-west-1",
+          "arn": "arn:aws:dynamodb:us-west-1:040479514298:table/MicroblogTable",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        }
+      }
     }
   }
 }

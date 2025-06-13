@@ -1,1 +1,118 @@
-{}
+{
+  "function": {
+    "createPost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "deletePost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getPost": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "listPosts": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_storage_MicroblogTable_arn": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ]
+    },
+    "AMPLIFY_storage_MicroblogTable_partitionKeyName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ]
+    },
+    "AMPLIFY_storage_MicroblogTable_partitionKeyType": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ]
+    },
+    "AMPLIFY_storage_MicroblogTable_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ]
+    },
+    "AMPLIFY_storage_MicroblogTable_tableName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "MicroblogTable"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "MicroblogTable": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "serviceType": "imported"
+    }
+  }
+}
