@@ -7,15 +7,16 @@ backend:
 frontend:
   phases:
     preBuild:
+      # install & select Node 22 before npm ci
       commands:
-        - echo "Installing Node.js 22 via nvm…"
+        - echo "→ Installing Node 22…"
         - nvm install 22
         - nvm use 22
-        - node -v               # verify you’re on v22.x.x
+        - node -v    # should print v22.x.x
         - npm ci
-  build:
-    commands:
-      - npm run build
+    build:
+      commands:
+        - npm run build
   artifacts:
     baseDirectory: .next
     files:
