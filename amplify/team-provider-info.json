@@ -1,0 +1,41 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bluescreened-dev-3f43e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreened-dev-3f43e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreened-dev-3f43e-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-bluescreened-dev-3f43e-deployment",
+      "UnauthRoleName": "amplify-bluescreened-dev-3f43e-unauthRole",
+      "StackName": "amplify-bluescreened-dev-3f43e",
+      "StackId": "arn:aws:cloudformation:us-west-1:040479514298:stack/amplify-bluescreened-dev-3f43e/f0af8260-c0ab-11f0-97f3-0211815f78b7",
+      "AmplifyAppId": "d3s3zwvfnndh6w"
+    },
+    "categories": {
+      "auth": {
+        "bluescreened864d46ca": {}
+      }
+    }
+  },
+  "microblog": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bluescreened-microblog-0751f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreened-microblog-0751f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::040479514298:role/amplify-bluescreened-microblog-0751f-authRole",
+      "Region": "us-west-1",
+      "DeploymentBucketName": "amplify-bluescreened-microblog-0751f-deployment",
+      "UnauthRoleName": "amplify-bluescreened-microblog-0751f-unauthRole",
+      "StackName": "amplify-bluescreened-microblog-0751f",
+      "StackId": "arn:aws:cloudformation:us-west-1:040479514298:stack/amplify-bluescreened-microblog-0751f/366a0b80-c0ad-11f0-af8f-068b80ef993d",
+      "AmplifyAppId": "d3s3zwvfnndh6w"
+    },
+    "categories": {
+      "auth": {
+        "bluescreened864d46ca": {}
+      },
+      "api": {
+        "bluescreened": {}
+      }
+    }
+  }
+}

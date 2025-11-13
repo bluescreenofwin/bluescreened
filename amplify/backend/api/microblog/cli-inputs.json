@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "serviceConfiguration": {
+    "apiName": "microblog",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS"
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 365
+      }
+    ]
+  }
+}
+

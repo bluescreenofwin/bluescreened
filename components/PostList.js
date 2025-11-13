@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-export default function PostList({ posts }) {
+export default function PostList({ posts = [] }) {
+  if (!posts.length) {
+    return <div className="text-muted">No posts yet.</div>;
+  }
+
   return (
     <ul className="list-group">
       {posts.map((post) => (
@@ -8,11 +12,13 @@ export default function PostList({ posts }) {
           key={post.id}
           className="list-group-item d-flex justify-content-between align-items-center"
         >
-          <Link href={`/post/${post.id}`}>
-            <a>{post.title}</a>
+          <Link href={`/post/${post.id}`} className="text-decoration-none">
+            {post.title}
           </Link>
           <small className="text-muted">
-            {new Date(post.createdAt).toLocaleDateString()}
+            {post.createdAt
+              ? new Date(post.createdAt).toLocaleDateString()
+              : '—'}
           </small>
         </li>
       ))}
