@@ -1,4 +1,35 @@
-/* You can add custom overrides here */
+/* Custom styles for the microblog */
 body {
   padding-top: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve card hover effects */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Better link styling */
+a.text-dark:hover {
+  color: var(--bs-primary) !important;
+}
+
+/* Post content styling */
+.post-content {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Improve spacing */
+.container {
+  max-width: 800px;
 }

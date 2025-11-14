@@ -51,17 +51,22 @@ export default function Home() {
 
   return (
     <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h1>Microblog</h1>
-        <Link href="/new" className="btn btn-primary">
-          New Post
-        </Link>
+      <div className="mb-4">
+        <h1 className="display-4 fw-bold">Microblog</h1>
+        <p className="lead text-muted">Latest posts from the community</p>
       </div>
 
-      {loading && <div>Loading posts…</div>}
+      {loading && (
+        <div className="text-center py-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading posts…</span>
+          </div>
+        </div>
+      )}
       {error && (
-        <div className="alert alert-danger" role="alert">
-          {error.message || 'Failed to load posts'}
+        <div className="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Error:</strong> {error.message || 'Failed to load posts'}
+          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       )}
       {!loading && !error && <PostList posts={posts} />}
