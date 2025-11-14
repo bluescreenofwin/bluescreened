@@ -6,11 +6,6 @@ frontend:
         - npm install
     build:
       commands:
-        - echo "API_REGION=$API_REGION"               >> .env.production
-        - echo "API_DOMAIN=$API_DOMAIN"               >> .env.production
-        - echo "API_STAGE=$API_STAGE"                 >> .env.production
-        - echo "DDB_ACCESS_KEY_ID=$DDB_ACCESS_KEY_ID" >> .env.production
-        - echo "DDB_SECRET_ACCESS_KEY=$DDB_SECRET_ACCESS_KEY" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
