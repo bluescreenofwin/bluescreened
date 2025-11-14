@@ -8,6 +8,12 @@ import awsconfig from '../aws-exports';
 
 Amplify.configure(awsconfig);
 
+// Initialize scheduler for daily emails (server-side only)
+if (typeof window === 'undefined') {
+  const { scheduleDailyEmail } = require('../lib/scheduler');
+  scheduleDailyEmail();
+}
+
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     // Import Bootstrap JS for interactive components

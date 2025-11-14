@@ -10,6 +10,20 @@ type Post
   title: String!
   content: String!
   owner: String!
+  viewCount: Int
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
+}
+
+# Custom mutation for incrementing view count (public access via API key)
+type Mutation {
+  incrementPostView(postId: ID!): IncrementViewResult
+    @function(name: "bluescreened537838f9-${env}")
+    @auth(rules: [{ allow: public, provider: apiKey }])
+}
+
+type IncrementViewResult {
+  success: Boolean!
+  viewCount: Int!
+  id: ID!
 }

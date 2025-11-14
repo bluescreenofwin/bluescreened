@@ -1,0 +1,12 @@
+[
+  {
+    "Effect": "Allow",
+    "Action": [
+      "dynamodb:GetItem",
+      "dynamodb:UpdateItem"
+    ],
+    "Resource": [
+      "arn:aws:dynamodb:us-west-1:040479514298:table/Post-kjn5z4i35rfghk3smjksxj23py-microblog"
+    ]
+  }
+]

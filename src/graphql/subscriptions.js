@@ -8,6 +8,7 @@ export const onCreatePost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename
@@ -21,6 +22,7 @@ export const onUpdatePost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename
@@ -34,6 +36,7 @@ export const onDeletePost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename

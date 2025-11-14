@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { API } from 'aws-amplify';
+import { API, Auth } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 
 import { CREATE_POST } from '../lib/graphql';
@@ -14,8 +14,93 @@ export default function NewPost() {
 
   const router = useRouter();
 
+  // Track authentication events
+  useEffect(() => {
+    const trackAuth = async () => {
+      try {
+        const user = await Auth.currentAuthenticatedUser();
+        if (user) {
+          // Log successful authentication
+          await fetch('/api/auth-log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username: user.username || user.attributes?.email || 'unknown',
+              success: true,
+            }),
+          });
+        }
+      } catch (error) {
+        // Not authenticated - this is expected before login
+      }
+    };
+
+    // Listen for auth state changes
+    const unsubscribe = Auth.Hub.listen('auth', async (data) => {
+      if (data.payload.event === 'signIn') {
+        const user = data.payload.data;
+        await fetch('/api/auth-log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: user.username || user.attributes?.email || 'unknown',
+            success: true,
+          }),
+        });
+      } else if (data.payload.event === 'signIn_failure') {
+        const error = data.payload.data;
+        await fetch('/api/auth-log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: error.username || 'unknown',
+            success: false,
+            error: error.message || 'Authentication failed',
+          }),
+        });
+      }
+    });
+
+    trackAuth();
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
-    <Authenticator>
+    <Authenticator
+      services={{
+        async handleSignIn(formData) {
+          const { username, password } = formData;
+          try {
+            const user = await Auth.signIn(username, password);
+            // Log successful login
+            await fetch('/api/auth-log', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                username: username,
+                success: true,
+              }),
+            });
+            return user;
+          } catch (error) {
+            // Log failed login
+            await fetch('/api/auth-log', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                username: username,
+                success: false,
+                error: error.message || 'Authentication failed',
+              }),
+            });
+            throw error;
+          }
+        },
+      }}
+    >
       {({ signOut, user }) => {
         const isAdmin = isAdminUser(user);
 

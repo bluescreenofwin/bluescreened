@@ -52,8 +52,20 @@ export default function Home() {
   return (
     <div className="container mt-4">
       <div className="mb-4">
-        <h1 className="display-4 fw-bold">Microblog</h1>
-        <p className="lead text-muted">Latest posts from the community</p>
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h1 className="display-4 fw-bold">Bluescreenofwin's Microblog</h1>
+            <p className="lead text-muted">Latest posts from the community</p>
+          </div>
+        </div>
+        <nav className="mb-3">
+          <Link href="/about" className="btn btn-outline-secondary btn-sm me-2">
+            About
+          </Link>
+          <Link href="/historical" className="btn btn-outline-secondary btn-sm">
+            Historical
+          </Link>
+        </nav>
       </div>
 
       {loading && (

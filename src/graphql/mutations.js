@@ -11,6 +11,7 @@ export const createPost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename
@@ -27,6 +28,7 @@ export const updatePost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename
@@ -43,8 +45,19 @@ export const deletePost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
+      __typename
+    }
+  }
+`;
+export const incrementPostView = /* GraphQL */ `
+  mutation IncrementPostView($postId: ID!) {
+    incrementPostView(postId: $postId) {
+      success
+      viewCount
+      id
       __typename
     }
   }

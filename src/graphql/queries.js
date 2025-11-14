@@ -8,6 +8,7 @@ export const getPost = /* GraphQL */ `
       title
       content
       owner
+      viewCount
       createdAt
       updatedAt
       __typename
@@ -26,6 +27,7 @@ export const listPosts = /* GraphQL */ `
         title
         content
         owner
+        viewCount
         createdAt
         updatedAt
         __typename

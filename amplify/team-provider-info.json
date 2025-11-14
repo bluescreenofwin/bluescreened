@@ -35,6 +35,12 @@
       },
       "api": {
         "bluescreened": {}
+      },
+      "function": {
+        "bluescreened537838f9": {
+          "deploymentBucketName": "amplify-bluescreened-microblog-0751f-deployment",
+          "s3Key": "amplify-builds/bluescreened537838f9-7564754e53787864664a-build.zip"
+        }
       }
     }
   }
